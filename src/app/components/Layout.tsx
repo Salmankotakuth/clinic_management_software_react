@@ -30,12 +30,17 @@ export function Layout() {
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
-      <aside className={`bg-blue-900 text-white transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-20'}`}>
-        <div className="p-4 flex items-center justify-between border-b border-blue-800">
-          {sidebarOpen && <h1 className="font-bold text-xl">HealthCare Clinic</h1>}
+      <aside className={`bg-gradient-to-b from-indigo-600 via-blue-600 to-blue-700 text-white transition-all duration-300 shadow-xl ${sidebarOpen ? 'w-64' : 'w-20'}`}>
+        <div className="p-4 flex items-center justify-between border-b border-white/10 bg-white/5">
+          {sidebarOpen && (
+            <div>
+              <h1 className="font-bold text-xl bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">HealthCare Clinic</h1>
+              <p className="text-xs text-blue-100 mt-1">Kochi Medical Center</p>
+            </div>
+          )}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 hover:bg-blue-800 rounded-lg"
+            className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200 hover:scale-110"
           >
             <MenuIcon />
           </button>
@@ -48,15 +53,15 @@ export function Layout() {
               to={item.path}
               end={item.path === "/"}
               className={({ isActive }) =>
-                `flex items-center gap-4 p-3 rounded-lg transition-colors ${
+                `flex items-center gap-4 p-3 rounded-xl transition-all duration-200 ${
                   isActive
-                    ? 'bg-blue-700 text-white'
-                    : 'text-blue-100 hover:bg-blue-800'
+                    ? 'bg-white/20 text-white shadow-lg backdrop-blur-sm border border-white/20'
+                    : 'text-blue-50 hover:bg-white/10 hover:text-white hover:translate-x-1'
                 }`
               }
             >
               <span className="flex-shrink-0">{item.icon}</span>
-              {sidebarOpen && <span>{item.label}</span>}
+              {sidebarOpen && <span className="font-medium">{item.label}</span>}
             </NavLink>
           ))}
         </nav>
@@ -65,25 +70,30 @@ export function Layout() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+        <header className="bg-gradient-to-r from-indigo-50 via-blue-50 to-indigo-50 shadow-md border-b border-indigo-100 px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-800">Kochi Medical Center</h2>
-              <p className="text-sm text-gray-600">Marine Drive, Kochi, Kerala</p>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">Kochi Medical Center</h2>
+              <p className="text-sm text-indigo-700 flex items-center gap-2 mt-1">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                Marine Drive, Kochi, Kerala
+              </p>
             </div>
-            <div className="flex items-center gap-4">
-              <button className="p-2 hover:bg-gray-100 rounded-lg relative">
-                <Notifications className="text-gray-600" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            <div className="flex items-center gap-3">
+              <button className="p-3 hover:bg-white/60 rounded-xl relative transition-all duration-200 hover:scale-105 backdrop-blur-sm">
+                <Notifications className="text-indigo-700" />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
               </button>
-              <button className="p-2 hover:bg-gray-100 rounded-lg">
-                <Settings className="text-gray-600" />
+              <button className="p-3 hover:bg-white/60 rounded-xl transition-all duration-200 hover:scale-105 backdrop-blur-sm">
+                <Settings className="text-indigo-700" />
               </button>
-              <div className="flex items-center gap-2 pl-4 border-l border-gray-200">
-                <AccountCircle className="text-gray-600 text-3xl" />
+              <div className="flex items-center gap-3 pl-4 border-l border-indigo-200">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center text-white font-bold shadow-md">
+                  DA
+                </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-800">Dr. Admin</p>
-                  <p className="text-xs text-gray-500">Administrator</p>
+                  <p className="text-sm font-semibold text-indigo-900">Dr. Admin</p>
+                  <p className="text-xs text-indigo-600">Administrator</p>
                 </div>
               </div>
             </div>

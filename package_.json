@@ -1,9 +1,0 @@
-{
-  "homepage": "https://Salmankotakuth.github.io/clinic_management_software_react/",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  }
-}
